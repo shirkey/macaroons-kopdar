@@ -1,4 +1,4 @@
-Distributed Web Security using Macaroons
+Distributed Web Security with Macaroons
 KopDar Python Meetup
 21 Jun 2014
 
@@ -6,17 +6,41 @@ Shirkey
 dev@shirkey.me
 @shirkeydev
 
-* Scope
-- About
-- Aspects
-- Methods
+* SCOPE
 
-* About
+text
+
+- About
+
+- *Concepts*
+
+    Data Security
+    User Security
+
+- *Methods*
+
+*** Client
+*** Server (Standalone)
+*** Server (Distributed)
+
+* Test
+
+.html ./index.html
+
+* ABOUT
+
+*Purpose:*
+- Overview of macaroons for secure web applications
+- Where they fit in the security ecosystem
+- How you can begin using them today
+
+*Me:*
 
 .image img/gravatar.jpeg
-@shirkeydev
 
-* Web Security: Data
+@shirkeydev loves Macaroons :)
+
+* Concepts: Data Security
 
 Focus: _What_is_being_secured_,_how_it_is_secured_
 
@@ -26,7 +50,7 @@ Focus: _What_is_being_secured_,_how_it_is_secured_
 
 .link https://en.wikipedia.org/wiki/Information_security The CIA Triad (CISSP)
 
-* Web Security: User
+* Concepts: User Security
 
 Focus: _Who_is_accessing_the_data,_how_is_that_access_monitored_
 
@@ -37,5 +61,3 @@ Focus: _Who_is_accessing_the_data,_how_is_that_access_monitored_
 * Methods of Web Security
 - Bearer Tokens
 - Certificates
-
-
