@@ -1,0 +1,41 @@
+Distributed Web Security using Macaroons
+KopDar Python Meetup
+21 Jun 2014
+
+Shirkey
+dev@shirkey.me
+@shirkeydev
+
+* Scope
+- About
+- Aspects
+- Methods
+
+* About
+
+.image img/gravatar.jpeg
+@shirkeydev
+
+* Web Security: Data
+
+Focus: _What_is_being_secured_,_how_it_is_secured_
+
+- Confidentiality
+- Integrity
+- Availability
+
+.link https://en.wikipedia.org/wiki/Information_security The CIA Triad (CISSP)
+
+* Web Security: User
+
+Focus: _Who_is_accessing_the_data,_how_is_that_access_monitored_
+
+- Authentication
+- Authorization
+- Non-Repudiation
+
+* Methods of Web Security
+- Bearer Tokens
+- Certificates
+
+
