@@ -40,24 +40,29 @@ text
 
 @shirkeydev loves Macaroons :)
 
-* Concepts: Data Security
+* Security Concepts
 
-Focus: _What_is_being_secured_,_how_it_is_secured_
+*Data*:
 
-- Confidentiality
-- Integrity
-- Availability
+- *Confidentiality* - _access_control_lists_
+- *Integrity* - _hashes,_checksums_
+- *Availability* - _backups,_disaster_recovery_
+
+*User*:
+
+- *Authentication* - _identify_users_
+- *Authorization* - _verifying_permissions_
+- *Non-Repudiation* - _audit_trail,_signatures_
 
 .link https://en.wikipedia.org/wiki/Information_security The CIA Triad (CISSP)
 
-* Concepts: User Security
+* Web Authentication Methods
 
-Focus: _Who_is_accessing_the_data,_how_is_that_access_monitored_
+*Who*are*you?*
 
-- Authentication
-- Authorization
-- Non-Repudiation
+*Client-side* -- 
+- Bearer Tokens - _cookies,_OAuth_tokens_
+- Certificates - _browser_cert_,_smart_card_
 
-* Methods of Web Security
-- Bearer Tokens
-- Certificates
+*Server-side* -- 
+- Certificates - _SSL_
