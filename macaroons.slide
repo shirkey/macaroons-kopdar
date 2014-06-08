@@ -42,7 +42,9 @@ text
 
 * Security Concepts
 
-*Data*:
+*Data* 
+
+.link https://en.wikipedia.org/wiki/Information_security The CIA Triad:
 
 - *Confidentiality* - _access_control_lists_
 - *Integrity* - _hashes,_checksums_
@@ -54,15 +56,29 @@ text
 - *Authorization* - _verifying_permissions_
 - *Non-Repudiation* - _audit_trail,_signatures_
 
-.link https://en.wikipedia.org/wiki/Information_security The CIA Triad (CISSP)
+* Authentication 
 
-* Web Authentication Methods
+* Client Authentication Factors
 
-*Who*are*you?*
+Answers the question: *Who*are*you?*
 
-*Client-side* -- 
+*Something you know* - userid/password, PIN number
+
+*Something you have* - smart card, certificate, handphone
+
+*Something you are* - biometric (fingerprint, iris scan)
+
+- Two factor authentication = two of those methods used in combination
+- After authentication, user is provided with a bearer token
+
+* Client Authentication Scenarios
+
+
+* Bearer Tokens
+
+*Client-side*
 - Bearer Tokens - _cookies,_OAuth_tokens_
 - Certificates - _browser_cert_,_smart_card_
 
-*Server-side* -- 
-- Certificates - _SSL_
+*Server-side*
+- Certificates - _server_cert_ie._SSL_
