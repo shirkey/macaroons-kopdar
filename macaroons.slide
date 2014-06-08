@@ -29,10 +29,13 @@ text
 
 * ABOUT
 
-*Purpose:*
+*Purpose*
 - Overview of macaroons for secure web applications
 - Where they fit in the security ecosystem
 - How you can begin using them today
+
+*Agenda*
+- Quick Review of Security Concepts
 
 *Me:*
 
@@ -40,45 +43,130 @@ text
 
 @shirkeydev loves Macaroons :)
 
-* Security Concepts
+* Aspects of Security
 
-*Data* 
-
-.link https://en.wikipedia.org/wiki/Information_security The CIA Triad:
+*DATA*ASPECTS*
 
 - *Confidentiality* - _access_control_lists_
 - *Integrity* - _hashes,_checksums_
 - *Availability* - _backups,_disaster_recovery_
 
-*User*:
+*USER*ASPECTS*
 
 - *Authentication* - _identify_users_
 - *Authorization* - _verifying_permissions_
-- *Non-Repudiation* - _audit_trail,_signatures_
+- *Accounting* - _audit_trail,_logging_
 
-* Authentication 
+We will be focusing exclusively on *Authentication* and *Authorization* in this discussion
 
-* Client Authentication Factors
+* Authentication
 
-Answers the question: *Who*are*you?*
+* Authentication Factors
 
-*Something you know* - userid/password, PIN number
+*Something*you*know*
 
-*Something you have* - smart card, certificate, handphone
+- _userid/password_
+- _PIN_number_
 
-*Something you are* - biometric (fingerprint, iris scan)
+*Something*you*have*
 
-- Two factor authentication = two of those methods used in combination
-- After authentication, user is provided with a bearer token
+- _smart_card_/_certificate_/_ *bearer*tokens*
+- _handphone_via_SMS/inbound_call_
 
-* Client Authentication Scenarios
+*Something*you*are* = _biometric_
+
+- _fingerprint_
+- _iris_scan_
+
+*Two-factor*authentication* = any two of these methods used in combination
+
+* Successful Authentication => Credentials
+
+After authentication, the user is provided *credentials* for authentication on successive requests
+
+Common web credential schemes include:
+
+- *Certificates*
+- *Cookies*
+- *Tokens*
+- *Macaroons*
+
+* Credentials
+
+* Credentials: Public-Key Certificates
+
+- ...
+
+Pros: 
+
+- agreed upon format
+- established certificate authorities
+
+Cons:
+
+- administration overhead -- installation and portability
+- non-zero cost
+- certificate revocation (see Heartbleed )
+
+http://digital-era.net/certificate-revocations-shoot-up-in-wake-of-openssl-heartbleed-bug/
+
+* Credentials: HTTP Cookies
+
+Web service creates and provides a unique session id as a cookie to the client,
+session state is maintained on server until token expiration (optional)
+
+Pros: 
+
+- simple
+- lightweight
+
+Cons:
+
+- cookies cannot be easily validated between domains
+
+* Credentials: Tokens
+
+Pros:
+- cookies shared across domains
+- support for third party authentication
+- implementations: OAuth, SAML, JWT, roll-your-own
+
+Cons:
+- ...
+
+More Info:
+.link http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-19
+
+* Credentials: Macaroons
+
+- a formalized approach to bearer tokens
+
+Pros:
+
+- lightweight -- simple HMAC wrapped cookies
+- distributed -- clients can 
+
+Cons:
+
+- channels for third party authentication a la OAuth / SAML are not yet defined
+
+* Macaroons
+
+* Macaroons: Overview
+
+Developed by Google team led by ...
+
+Provides for a simpler distributed bearer token with
+
+- Third-party authentication methods
+- Flexible authorization (constrain access at the identity, resources)
 
 
-* Bearer Tokens
+Implementation available today for Debian using libmacaroons
 
-*Client-side*
-- Bearer Tokens - _cookies,_OAuth_tokens_
-- Certificates - _browser_cert_,_smart_card_
+Python bindings -- that's why we are here!
 
-*Server-side*
-- Certificates - _server_cert_ie._SSL_
+
+* References
+
+https://auth0.com/blog/2014/01/07/angularjs-authentication-with-cookies-vs-token/
