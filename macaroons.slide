@@ -54,7 +54,7 @@ text
 *USER*ASPECTS*
 
 - *Authentication* - _identify_users_
-- *Authorization* - _verifying_permissions_
+- *Authorization* - _credentials,_permissions_
 - *Accounting* - _audit_trail,_logging_
 
 We will be focusing exclusively on *Authentication* and *Authorization* in this discussion
@@ -80,9 +80,9 @@ We will be focusing exclusively on *Authentication* and *Authorization* in this 
 
 *Two-factor*authentication* = any two of these methods used in combination
 
-* Successful Authentication => Credentials
+* Successful Authentication => Authorization Credentials
 
-After authentication, the user is provided *credentials* for authentication on successive requests
+After authentication, the user is provided *credentials* for authorization on successive requests
 
 Common web credential schemes include:
 
@@ -91,7 +91,7 @@ Common web credential schemes include:
 - *Tokens*
 - *Macaroons*
 
-* Credentials
+* Credential Schemes
 
 * Credentials: Public-Key Certificates
 
@@ -127,24 +127,29 @@ Cons:
 * Credentials: Tokens
 
 Pros:
-- cookies shared across domains
-- support for third party authentication
-- implementations: OAuth, SAML, JWT, roll-your-own
+- use either cookies or other storage mechanism (localStorage/sessionStorage) 
+TODO: confirm this
+- can be shared across domains, useful for third party authentication/authorization
+- implementations: OAuth, SAML, roll-your-own
 
 Cons:
-- ...
+- multiple standards still in draft: JWT, JWS
 
 More Info:
+
 .link http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-19
+.link http://tools.ietf.org/html/draft-ietf-jose-json-web-signature-26
 
 * Credentials: Macaroons
 
-- a formalized approach to bearer tokens
+- a distributed approach to bearer tokens
 
 Pros:
 
-- lightweight -- simple HMAC wrapped cookies
-- distributed -- clients can 
+same benefits as tokens, plus:
+
+- delegation
+- contraint authorization
 
 Cons:
 
@@ -161,11 +166,9 @@ Provides for a simpler distributed bearer token with
 - Third-party authentication methods
 - Flexible authorization (constrain access at the identity, resources)
 
-
 Implementation available today for Debian using libmacaroons
 
 Python bindings -- that's why we are here!
-
 
 * References
 
