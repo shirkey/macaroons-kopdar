@@ -195,15 +195,15 @@ Our demo will be minimal (no authentication, text content only) and will highlig
 
 * Installing libmacaroons
 
-.play 00_installing.sh /START OMIT/,/END OMIT/
+.play installing.sh /START OMIT/,/END OMIT/
 
 * Macaroon Arguments
 
-.play ./01_create_the_token.py /START 1 OMIT/,/END 1 OMIT/
+.play ./create_the_token.py /START 1 OMIT/,/END 1 OMIT/
 
 * Macaroon Instance
 
-.play ./01_create_the_token.py /START 2 OMIT/,/END 2 OMIT/
+.play ./create_the_token.py /START 2 OMIT/,/END 2 OMIT/
 
 
 * References
