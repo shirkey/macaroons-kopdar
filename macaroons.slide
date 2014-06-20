@@ -186,6 +186,11 @@ Notice that without the first-party caveat, our base macaroon can access *any* u
 
 .play -edit ./distributed_constraint.py /START 1 OMIT/,/END 1 OMIT/
 
+* libmacaroons: now the token can be validated in delegated use
+
+.play -edit ./check_distributed_constraints.py /START 1 OMIT/,/END 1 OMIT/
+
+
 * References
 
 .link https://github.com/rescrv/libmacaroons
