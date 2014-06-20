@@ -84,12 +84,11 @@ We will be focusing exclusively on *Authentication* and *Authorization* in this 
 
 After authentication, the user is provided *credentials* for authorization on successive requests
 
-Common web credential schemes include:
+Common credential schemes found on the web include:
 
 - *Certificates*
 - *Cookies*
 - *Tokens*
-- *Macaroons*
 
 * Credential Schemes
 
@@ -125,19 +124,22 @@ Cons:
 - cookies cannot be easily validated between domains
 
 * Credentials: Tokens
+Distributed credentials in the cloud that can be shared between users and services
+
+_Macaroons_ are an implementation of a token credential
 
 Pros:
-- use either cookies or other storage mechanism (localStorage/sessionStorage) 
-TODO: confirm this
-- can be shared across domains, useful for third party authentication/authorization
+- use cookies or other storage mechanism (localStorage/sessionStorage) client-side
+- can be shared across clients and domains, useful for distributed authorization
 - implementations: OAuth, SAML, roll-your-own
 
 Cons:
-- multiple standards still in draft: JWT, JWS
+- Macaroons are not alone: multiple standards still in draft (JWT, JWS)
 
 More Info:
 
 .link http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-19
+
 .link http://tools.ietf.org/html/draft-ietf-jose-json-web-signature-26
 
 * Credentials: Macaroons
@@ -159,17 +161,19 @@ Cons:
 
 * Macaroons: Overview
 
-Developed by Google team led by ...
+Developed by Google Research team
 
-Provides for a simpler distributed bearer token with
-
-- Third-party authentication methods
+Provides for a simple distributed bearer token with
+- Delegation
+- Contextual Caveats
+- 
+- Support for third-party authentication methods
 - Flexible authorization (constrain access at the identity, resources)
 
-Implementation available today for Debian using libmacaroons
-
-Python bindings -- that's why we are here!
+Implementation available today for Debian/Ubuntu using libmacaroons
+- Python and Go bindings -- that's why we are here!
 
 * References
 
-https://auth0.com/blog/2014/01/07/angularjs-authentication-with-cookies-vs-token/
+.link https://github.com/rescrv/libmacaroons
+.link https://auth0.com/blog/2014/01/07/angularjs-authentication-with-cookies-vs-token/
