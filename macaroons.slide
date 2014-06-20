@@ -2,58 +2,37 @@ Distributed Web Security with Macaroons
 KopDar Python Meetup
 21 Jun 2014
 
-Shirkey
+Steve Shirkey
 dev@shirkey.me
 @shirkeydev
 
-* SCOPE
-
-text
-
-- About
-
-- *Concepts*
-
-    Data Security
-    User Security
-
-- *Methods*
-
-*** Client
-*** Server (Standalone)
-*** Server (Distributed)
-
-* ABOUT
+* About
 
 *Purpose*
-- Overview of macaroons for secure web applications
-- Where they fit in the security ecosystem
-- How you can begin using them today
-
-*Agenda*
-- Quick Review of Security Concepts
+- A little about security, authentication and authorization
+- Using macaroons / libmacaroons
 
 *Me:*
 
-@shirkeydev loves Macaroons :)
+I'm @shirkeydev
 
 * Aspects of Security
 
-*DATA*ASPECTS*
+*Data*
 
 - *Confidentiality* - _access_control_lists_
 - *Integrity* - _hashes,_checksums_
 - *Availability* - _backups,_disaster_recovery_
 
-*USER*ASPECTS*
+*User*
 
 - *Authentication* - _identify_users_
 - *Authorization* - _credentials,_permissions_
 - *Accounting* - _audit_trail,_logging_
 
-We will be focusing exclusively on *Authentication* and *Authorization* in this discussion
+We will be focusing almost exclusively on *Authorization* in this discussion
 
-* Authentication
+* But first, a word about Authentication
 
 * Authentication Factors
 
@@ -78,17 +57,17 @@ We will be focusing exclusively on *Authentication* and *Authorization* in this 
 
 After authentication, the user is provided *credentials* for authorization on successive requests
 
-Common credential schemes found on the web include:
+Common authorization credential schemes found on the web include:
 
 - *Certificates*
 - *Cookies*
 - *Tokens*
 
-* Credential Schemes
+* Authorization Credential Schemes
 
 * Credentials: Public-Key Certificates
 
-- ...
+Basically something server administrators look forward to administering every year*
 
 Pros: 
 
@@ -99,9 +78,8 @@ Cons:
 
 - administration overhead -- installation and portability
 - non-zero cost
-- certificate revocation (see Heartbleed )
-
-http://digital-era.net/certificate-revocations-shoot-up-in-wake-of-openssl-heartbleed-bug/
+- *certificate revocation every year or earlier (see Heartbleed )
+.link http://digital-era.net/certificate-revocations-shoot-up-in-wake-of-openssl-heartbleed-bug/
 
 * Credentials: HTTP Cookies
 
@@ -134,21 +112,6 @@ More Info:
 .link http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-19
 
 .link http://tools.ietf.org/html/draft-ietf-jose-json-web-signature-26
-
-* Credentials: Macaroons
-<b>hello</b>
-- a distributed approach to bearer tokens
-
-Pros:
-
-same benefits as tokens, plus:
-
-- delegation
-- contraint authorization
-
-Cons:
-
-- channels for third party authentication a la OAuth / SAML are not yet defined
 
 * Macaroons
 
@@ -201,7 +164,9 @@ Provides for a simple distributed bearer token with
 
 * libmacaroons: adding user-specific constraints
 
-Our first macaroon was general, we need to provide user-specific credentials
+Our first macaroon was too general, so we need to provide our users with constrained credentials
+
+Notice that we do not need the secret to add constraints to a macaroon
 
 .play -edit ./add_user_constraint.py /START 1 OMIT/,/END 1 OMIT/
 
@@ -211,17 +176,16 @@ We will validate the user against a requested resource
 
 .play -edit ./verify_user_constraint.py /START 1 OMIT/,/END 1 OMIT/ HL001
 
-* libmacaroons: validate user-specific constraints, part 2
+* libmacaroons: validate user-specific constraints -- gotchas
 
-Also notice by using the base key, we can against any resource without restriction
+Notice that without the first-party caveat, our base macaroon can access *any* user resource
 
 .play -edit ./verify_user_constraint.py /START 1 OMIT/,/END 1 OMIT/ HL002
 
-* KopDar Server (without authorization)
+* libmacaroons: user can further constrain macaroon for delegation
 
-.play ./run_kopdar_server.py /START 1 OMIT/,/END 1 OMIT/
+.play -edit ./distributed_constraint.py /START 1 OMIT/,/END 1 OMIT/
 
-* Demo, aka "Putting It All Together"
 
 * Demo Scenario (Problem)
 
@@ -242,3 +206,5 @@ Our demo will be minimal (no authentication, text content only) and will highlig
 * References
 
 .link https://auth0.com/blog/2014/01/07/angularjs-authentication-with-cookies-vs-token/
+.link http://theory.stanford.edu/~ataly/Papers/macaroons.pdf
+.link http://cs.nyu.edu/web/Research/TechReports/TR2013-962/TR2013-962.pdf
