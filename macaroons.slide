@@ -73,10 +73,10 @@ We will be focusing exclusively on *Authentication* and *Authorization* in this 
 - _smart_card_/_certificate_/_ *bearer*tokens*
 - _handphone_via_SMS/inbound_call_
 
-*Something*you*are* = _biometric_
+*Something*you*are*
 
-- _fingerprint_
-- _iris_scan_
+- _fingerprint_,_iris_scan_
+- _CAPTCHA_
 
 *Two-factor*authentication* = any two of these methods used in combination
 
