@@ -23,8 +23,10 @@ macaroon_ku = macaroons.create(location, secret, public)
 
 # we now hold a reference to our newly instantiated macaroon object
 print macaroon_ku
+
 # we can print the HMAC signature of this message
 print 'macaroon_ku.signature: %s' % macaroon_ku.signature
+
 # and we can convert the macaroon object to a serialized form for transport
 print 'macaroon_ku.serialize(): %s' % macaroon_ku.serialize()
 
