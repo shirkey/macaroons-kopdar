@@ -190,6 +190,11 @@ Notice that without the first-party caveat, our base macaroon can access *any* u
 
 .play -edit ./check_distributed_constraints.py /START 1 OMIT/,/END 1 OMIT/
 
+* libmacaroons: further functionality
+
+- satisfy_general -- create more complex verifications beyond string matching
+
+- add_third_party_caveat -- include external services to verify tokens in a secure manner
 
 * References
 
