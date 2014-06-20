@@ -9,7 +9,13 @@ app = Flask(__name__)
 def home():
     return "Welcome to KopDar Members site"
 
+# END 1 OMIT
+
+# START 2 OMIT
+@app.route("/login/<id>")
+def login(id):
+
+# END 2 OMIT
+
 if __name__ == "__main__":
     app.run()
-
-# END 1 OMIT

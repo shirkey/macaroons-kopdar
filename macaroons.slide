@@ -170,14 +170,42 @@ Provides for a simple distributed bearer token with
 
 - We will only be discussing first-party
 
-* Macaroons: Implementations:
+* Macaroons: Implementations
 
-- available today for Debian/Ubuntu using libmacaroons
-- Python and Go bindings -- that's why we are here!
+- *libmacaroons* is available today for Debian/Ubuntu
+- Python and Go bindings included
 
 .link https://github.com/rescrv/libmacaroons
 
-* Macaroons: Demo
+* libmacaroons
+
+* libmacaroons: Installation
+
+.play installing.sh /START OMIT/,/END OMIT/
+
+* libmacaroons: attributes of a basic macaroon
+
+.play ./create_the_token.py /START 1 OMIT/,/END 1 OMIT/
+
+* libmacaroons: instantiating our macaroon
+
+.play ./create_the_token.py /START 2 OMIT/,/END 2 OMIT/
+
+* libmacaroons: deserializing a macaroon
+
+.play ./validate_the_token.py /START 1 OMIT/,/END 1 OMIT/
+
+* libmacaroons: validating the macaroon
+
+.play ./validate_the_token.py /START 2 OMIT/,/END 2 OMIT/
+
+* libmacaroons: 
+
+* KopDar Server (without authorization)
+
+.play ./run_kopdar_server.py /START 1 OMIT/,/END 1 OMIT/
+
+* Demo, aka "Putting It All Together"
 
 * Demo Scenario (Problem)
 
@@ -193,21 +221,6 @@ Using macaroons, we will provide credential tokens to access content for all Kop
 
 Our demo will be minimal (no authentication, text content only) and will highlight some interesting aspects of macaroons
 
-* Installing libmacaroons
-
-.play installing.sh /START OMIT/,/END OMIT/
-
-* Macaroon Arguments
-
-.play ./create_the_token.py /START 1 OMIT/,/END 1 OMIT/
-
-* Macaroon Instance
-
-.play ./create_the_token.py /START 2 OMIT/,/END 2 OMIT/
-
-* KopDar Server (without authorization)
-
-.play ./run_kopdar_server.py /START 1 OMIT/,/END 1 OMIT/
 
 
 * References
