@@ -193,11 +193,11 @@ Provides for a simple distributed bearer token with
 
 * libmacaroons: deserializing a macaroon
 
-.play ./validate_the_token.py /START 1 OMIT/,/END 1 OMIT/
+.play -edit ./deserialize_the_token.py /START 1 OMIT/,/END 1 OMIT/
 
 * libmacaroons: validating the macaroon
 
-.play ./validate_the_token.py /START 2 OMIT/,/END 2 OMIT/
+.play ./validate_the_token.py /START 1 OMIT/,/END 1 OMIT/
 
 * libmacaroons: 
 
