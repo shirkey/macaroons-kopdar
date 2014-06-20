@@ -126,12 +126,11 @@ Cons:
 * Credentials: Tokens
 Distributed credentials in the cloud that can be shared between users and services
 
-_Macaroons_ are an implementation of a token credential
+*Macaroons* are token credentials using HMAC signing
 
 Pros:
 - use cookies or other storage mechanism (localStorage/sessionStorage) client-side
 - can be shared across clients and domains, useful for distributed authorization
-- implementations: OAuth, SAML, roll-your-own
 
 Cons:
 - Macaroons are not alone: multiple standards still in draft (JWT, JWS)
@@ -143,7 +142,7 @@ More Info:
 .link http://tools.ietf.org/html/draft-ietf-jose-json-web-signature-26
 
 * Credentials: Macaroons
-
+<b>hello</b>
 - a distributed approach to bearer tokens
 
 Pros:
