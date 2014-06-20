@@ -23,10 +23,6 @@ text
 *** Server (Standalone)
 *** Server (Distributed)
 
-* Test
-
-.html ./index.html
-
 * ABOUT
 
 *Purpose*
@@ -38,8 +34,6 @@ text
 - Quick Review of Security Concepts
 
 *Me:*
-
-.image img/gravatar.jpeg
 
 @shirkeydev loves Macaroons :)
 
@@ -165,14 +159,51 @@ Developed by Google Research team
 Provides for a simple distributed bearer token with
 - Delegation
 - Contextual Caveats
-- 
+
+* Macaroons: Delegation
 - Support for third-party authentication methods
 - Flexible authorization (constrain access at the identity, resources)
 
-Implementation available today for Debian/Ubuntu using libmacaroons
+* Macaroons: Contextual Caveats
+- Attenuation / constraint of original macaroon
+- Two types of constraint: first-party and third-party
+
+
+* Macaroons: Implementations:
+
+- .link https://github.com/rescrv/libmacaroons
+- available today for Debian/Ubuntu using libmacaroons
 - Python and Go bindings -- that's why we are here!
+
+* Macaroons: Demo
+
+* Demo Scenario (Problem)
+
+We want to create a special KopDar members-only area on the Python ID website.
+
+This area will allow KopDar members to posted messages and photos from the meetups.
+
+Of course, KopDar members will occasionally want to share this material to friends and family members who *really* love Python as much as they do, but could not attend the KopDar meetups.
+
+* Demo Scenario (Solution)
+
+Using macaroons, we will provide credential tokens to access content for all KopDar members as well as a link for those items to be shared publicly in limited ways via contextual caveats -- ie. a limited time period
+
+Our demo will be minimal (no authentication, text content only) and will highlight some interesting aspects of macaroons
+
+* Installing libmacaroons
+
+.play 00_installing.sh
+
+* Macaroon Arguments
+
+.play ./01_create_the_token.py /START 1 OMIT/,/END 1 OMIT/
+
+* Macaroon Instance
+
+.play ./01_create_the_token.py /START 2 OMIT/,/END 2 OMIT/
+
 
 * References
 
-.link https://github.com/rescrv/libmacaroons
 .link https://auth0.com/blog/2014/01/07/angularjs-authentication-with-cookies-vs-token/
