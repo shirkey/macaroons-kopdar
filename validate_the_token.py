@@ -14,14 +14,10 @@ def validate_verbose(submitted_macaroon=macaroon):
 
     # we'll need the original secret we created earlier
     secret = 'kopdar_python_rocks'  # // HL
+    # secret = 'kopdar_python_is_ok-lah'
 
     # we attempt to verify the submitted macaroon
     print "Is the secret '%s'? -- %s" % (secret, v.verify(submitted_macaroon, secret)) # // HL
-
-    # if we attempt to validate with the wrong secret
-    secret = 'kopdar_python_is_ok-lah' # // HL
-    print "Is the secret '%s'? -- %s" % (secret, v.verify(submitted_macaroon, secret)) # // HL
-
     # END 1 OMIT
 
 if __name__ == "__main__":

@@ -32,4 +32,4 @@ def deserialize_verbose(token=submitted_token):
 if __name__ == "__main__":
     # request the token for inspection
     #submitted_token = raw_input('Enter token to be inspected: ') or submitted_token
-    deserialize(submitted_token)
+    deserialize_verbose(submitted_token)

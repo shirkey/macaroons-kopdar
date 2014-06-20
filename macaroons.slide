@@ -197,7 +197,7 @@ Provides for a simple distributed bearer token with
 
 * libmacaroons: validating the macaroon
 
-.play ./validate_the_token.py /START 1 OMIT/,/END 1 OMIT/
+.play -edit ./validate_the_token.py /START 1 OMIT/,/END 1 OMIT/
 
 * libmacaroons: 
 
