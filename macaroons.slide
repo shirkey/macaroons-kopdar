@@ -192,9 +192,9 @@ Notice that without the first-party caveat, our base macaroon can access *any* u
 
 * libmacaroons: further functionality
 
-- satisfy_general -- create more complex verifications beyond string matching
+- *satisfy_general* -- create more complex verifications beyond string matching
 
-- add_third_party_caveat -- include external services to verify tokens in a secure manner
+- *add_third_party_caveat* -- include external verification of macaroons
 
 * References
 
