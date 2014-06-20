@@ -199,7 +199,23 @@ Provides for a simple distributed bearer token with
 
 .play -edit ./validate_the_token.py /START 1 OMIT/,/END 1 OMIT/
 
-* libmacaroons: 
+* libmacaroons: adding user-specific constraints
+
+Our first macaroon was general, we need to provide user-specific credentials
+
+.play -edit ./add_user_constraint.py /START 1 OMIT/,/END 1 OMIT/
+
+* libmacaroons: validate user-specific constraints
+
+We will validate the user against a requested resource
+
+.play -edit ./verify_user_constraint.py /START 1 OMIT/,/END 1 OMIT/ HL001
+
+* libmacaroons: validate user-specific constraints, part 2
+
+Also notice by using the base key, we can against any resource without restriction
+
+.play -edit ./verify_user_constraint.py /START 1 OMIT/,/END 1 OMIT/ HL002
 
 * KopDar Server (without authorization)
 
