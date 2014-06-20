@@ -168,12 +168,14 @@ Provides for a simple distributed bearer token with
 - Attenuation / constraint of original macaroon
 - Two types of constraint: first-party and third-party
 
+- We will only be discussing first-party
 
 * Macaroons: Implementations:
 
-- .link https://github.com/rescrv/libmacaroons
 - available today for Debian/Ubuntu using libmacaroons
 - Python and Go bindings -- that's why we are here!
+
+.link https://github.com/rescrv/libmacaroons
 
 * Macaroons: Demo
 
@@ -193,7 +195,7 @@ Our demo will be minimal (no authentication, text content only) and will highlig
 
 * Installing libmacaroons
 
-.play 00_installing.sh
+.play 00_installing.sh /START OMIT/,/END OMIT/
 
 * Macaroon Arguments
 
