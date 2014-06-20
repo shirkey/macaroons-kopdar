@@ -205,6 +205,10 @@ Our demo will be minimal (no authentication, text content only) and will highlig
 
 .play ./create_the_token.py /START 2 OMIT/,/END 2 OMIT/
 
+* KopDar Server (without authorization)
+
+.play ./run_kopdar_server.py /START 1 OMIT/,/END 1 OMIT/
+
 
 * References
 
