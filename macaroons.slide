@@ -126,11 +126,13 @@ Provides for a simple distributed bearer token with
 * Macaroons: Delegation
 - Support for third-party authentication methods
 - Flexible authorization (constrain access at the identity, resources)
+- Credentials can be further constrained outside of originating service
 
 * Macaroons: Contextual Caveats
-- Attenuation / constraint of original macaroon
-- Two types of constraint: first-party and third-party
-
+- Attenuation / constraint of original macaroon using caveats
+- Two types of caveats: first-party and third-party
+- First-party is the originating service that creates the credential
+- Third-party are any trusted external services that can validate credentials
 - We will only be discussing first-party
 
 * Macaroons: Implementations
@@ -195,6 +197,8 @@ Notice that without the first-party caveat, our base macaroon can access *any* u
 - *satisfy_general* -- create more complex verifications beyond string matching
 
 - *add_third_party_caveat* -- include external verification of macaroons
+
+- since Macaroons are based on HMAC, it is possible we will see Javascript implementations soon
 
 * References
 
