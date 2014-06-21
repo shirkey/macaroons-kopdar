@@ -14,9 +14,11 @@ dev@shirkey.me
 
 *Me:*
 
-I'm @shirkeydev
+I'm @shirkeydev ...
 
-* Aspects of Security
+.image img/gravatar.jpeg
+
+* Security Aspects
 
 *Data*
 
@@ -198,10 +200,13 @@ Notice that without the first-party caveat, our base macaroon can access *any* u
 
 - *add_third_party_caveat* -- include external verification of macaroons
 
-- since Macaroons are based on HMAC, it is possible we will see Javascript implementations soon
+- since Macaroons are based on HMAC, it is very likely we will see native Javascript implementations soon
 
 * References
 
-.link https://github.com/rescrv/libmacaroons
-.link http://theory.stanford.edu/~ataly/Papers/macaroons.pdf
-.link http://cs.nyu.edu/web/Research/TechReports/TR2013-962/TR2013-962.pdf
+.link http://hackingdistributed.com/2014/05/16/macaroons-are-better-than-cookies/ Macaroons are Better Than Cookies! (article)
+.link http://hackingdistributed.com/2014/05/21/my-first-macaroon/ My First Macaroon: A New Way to do Authorization (article)
+.link http://github.com/rescrv/libmacaroons libmacaroons (source code)
+.link http://theory.stanford.edu/~ataly/Papers/macaroons.pdf Macaroons: Cookies with Contextual Caveats for Decentralized Authorization in the Cloud (the original research paper)
+.link http://air.mozilla.org/macaroons-cookies-with-contextual-caveats-for-decentralized-authorization-in-the-cloud/ Macaroons: Cookies with Contextual Caveats for Decentralized Authorization in the Cloud (presentation by Google Research team member)
+.link http://cs.nyu.edu/web/Research/TechReports/TR2013-962/TR2013-962.pdf Cryptographic Security of Macaroon Authorization Credentials (additional research paper)
