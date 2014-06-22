@@ -1,0 +1,212 @@
+Distributed Web Security with Macaroons
+KopDar Python Meetup
+21 Jun 2014
+
+Shirkey
+dev@shirkey.me
+@shirkeydev
+
+* About
+
+*Purpose*
+- A little about security, authentication and authorization
+- Using macaroons / libmacaroons
+
+*Me:*
+
+I'm @shirkeydev ...
+
+.image img/gravatar.jpeg
+
+* Security Aspects
+
+*Data*
+
+- *Confidentiality* - _access_control_lists_
+- *Integrity* - _hashes,_checksums_
+- *Availability* - _backups,_disaster_recovery_
+
+*User*
+
+- *Authentication* - _identify_users_
+- *Authorization* - _credentials,_permissions_
+- *Accounting* - _audit_trail,_logging_
+
+We will be focusing almost exclusively on *Authorization* in this discussion
+
+* But first, a word about Authentication
+
+* Authentication Factors
+
+*Something*you*know*
+
+- _userid/password_
+- _PIN_number_
+
+*Something*you*have*
+
+- _smart_card_/_certificate_/_ *bearer*tokens*
+- _handphone_via_SMS/inbound_call_
+
+*Something*you*are*
+
+- _fingerprint_,_iris_scan_
+- _CAPTCHA_
+
+*Two-factor*authentication* = any two of these methods used in combination
+
+* Successful Authentication => Authorization Credentials
+
+After authentication, the user is provided *credentials* for authorization on successive requests
+
+Common authorization credential schemes found on the web include:
+
+- *Certificates*
+- *Cookies*
+- *Tokens*
+
+* Authorization Credential Schemes
+
+* Credentials: Public-Key Certificates
+
+Basically something server administrators look forward to administering every year*
+
+Pros: 
+
+- agreed upon format
+- established certificate authorities
+
+Cons:
+
+- administration overhead -- installation and portability
+- non-zero cost
+- *certificate revocation every year or earlier (see Heartbleed )
+.link http://digital-era.net/certificate-revocations-shoot-up-in-wake-of-openssl-heartbleed-bug/
+
+* Credentials: HTTP Cookies
+
+Web service creates and provides a unique session id as a cookie to the client,
+session state is maintained on server until token expiration (optional)
+
+Pros: 
+
+- simple
+- lightweight
+
+Cons:
+
+- cookies cannot be easily validated between domains
+
+* Credentials: Tokens
+Distributed credentials in the cloud that can be shared between users and services
+
+*Macaroons* are token credentials using HMAC signing
+
+Pros:
+- use cookies or other storage mechanism (localStorage/sessionStorage) client-side
+- can be shared across clients and domains, useful for distributed authorization
+
+Cons:
+- Macaroons are not alone: multiple standards still in draft (JWT, JWS)
+
+More Info:
+
+.link http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-19
+
+.link http://tools.ietf.org/html/draft-ietf-jose-json-web-signature-26
+
+* Macaroons
+
+* Macaroons: Overview
+
+Developed by Google Research team
+
+Provides for a simple distributed bearer token with
+- Delegation
+- Contextual Caveats
+
+* Macaroons: Delegation
+- Support for third-party authentication methods
+- Flexible authorization (constrain access at the identity, resources)
+- Credentials can be further constrained outside of originating service
+
+* Macaroons: Contextual Caveats
+- Attenuation / constraint of original macaroon using caveats
+- Two types of caveats: first-party and third-party
+- First-party is the originating service that creates the credential
+- Third-party are any trusted external services that can validate credentials
+- We will only be discussing first-party
+
+* Macaroons: Implementations
+
+- *libmacaroons* is available today for Debian/Ubuntu
+- Python and Go bindings included
+
+.link https://github.com/rescrv/libmacaroons
+
+* libmacaroons
+
+* libmacaroons: Installation
+
+.play installing.sh /START OMIT/,/END OMIT/
+
+* libmacaroons: attributes of a basic macaroon
+
+.play ./create_the_token.py /START 1 OMIT/,/END 1 OMIT/
+
+* libmacaroons: instantiating our macaroon
+
+.play ./create_the_token.py /START 2 OMIT/,/END 2 OMIT/
+
+* libmacaroons: deserializing a macaroon
+
+.play -edit ./deserialize_the_token.py /START 1 OMIT/,/END 1 OMIT/
+
+* libmacaroons: validating the macaroon
+
+.play -edit ./validate_the_token.py /START 1 OMIT/,/END 1 OMIT/
+
+* libmacaroons: adding user-specific constraints
+
+Our first macaroon was too general, so we need to provide our users with constrained credentials
+
+Notice that we do not need the secret to add constraints to a macaroon
+
+.play -edit ./add_user_constraint.py /START 1 OMIT/,/END 1 OMIT/
+
+* libmacaroons: validate user-specific constraints
+
+We will validate the user against a requested resource
+
+.play -edit ./verify_user_constraint.py /START 1 OMIT/,/END 1 OMIT/ HL001
+
+* libmacaroons: validate user-specific constraints -- gotchas
+
+Notice that without the first-party caveat, our base macaroon can access *any* user resource
+
+.play -edit ./verify_user_constraint.py /START 1 OMIT/,/END 1 OMIT/ HL002
+
+* libmacaroons: user can further constrain macaroon for delegation
+
+.play -edit ./distributed_constraint.py /START 1 OMIT/,/END 1 OMIT/
+
+* libmacaroons: now the token can be validated in delegated use
+
+.play -edit ./check_distributed_constraints.py /START 1 OMIT/,/END 1 OMIT/
+
+* libmacaroons: further functionality
+
+- *satisfy_general* -- create more complex verifications beyond string matching
+
+- *add_third_party_caveat* -- include external verification of macaroons
+
+- since Macaroons are based on HMAC, it is very likely we will see native Javascript implementations soon
+
+* References
+
+.link http://hackingdistributed.com/2014/05/16/macaroons-are-better-than-cookies/ Macaroons are Better Than Cookies! (article)
+.link http://hackingdistributed.com/2014/05/21/my-first-macaroon/ My First Macaroon: A New Way to do Authorization (article)
+.link http://github.com/rescrv/libmacaroons libmacaroons (source code)
+.link http://theory.stanford.edu/~ataly/Papers/macaroons.pdf Macaroons: Cookies with Contextual Caveats for Decentralized Authorization in the Cloud (the original research paper)
+.link http://air.mozilla.org/macaroons-cookies-with-contextual-caveats-for-decentralized-authorization-in-the-cloud/ Macaroons: Cookies with Contextual Caveats for Decentralized Authorization in the Cloud (presentation by Google Research team member)
+.link http://cs.nyu.edu/web/Research/TechReports/TR2013-962/TR2013-962.pdf Cryptographic Security of Macaroon Authorization Credentials (additional research paper)
