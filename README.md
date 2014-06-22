@@ -1,8 +1,4 @@
-macaroons-kopdar
-================
-
-Distributed Web Security with Macaroons (KopDar Python Presentation)
-=======
+# Distributed Web Security with Macaroons
 
 ## Overview
 This is a presentation given for the [KopDar Python Meetup](http://www.meetup.com/Python-ID/events/187061422/) 
@@ -39,4 +35,3 @@ To run the presentation itself, you will need [Go version 1+](http://golang.org/
 
 If you already have Go installed, running ./start-slideshow.sh will first attempt to install 
 the go.tools/present package, then launch the localhost web app used by present and finally open the default web browser to the local presentation URL.
->>>>>>> master
